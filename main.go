@@ -308,7 +308,7 @@ func collectCheckResults(proxyChecker *checker.ProxyChecker) []storage.NodeCheck
 			proxy.StableID = proxy.GenerateStableID()
 		}
 
-		online, latency, err := proxyChecker.GetProxyStatus(proxy.Name)
+		online, latency, err := proxyChecker.GetProxyStatusByStableID(proxy.StableID)
 		if err != nil {
 			online = false
 			latency = 0
