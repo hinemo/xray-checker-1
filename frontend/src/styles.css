@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 44 100% 97%;
+  --foreground: 190 70% 10%;
+  --card: 0 0% 100%;
+  --card-foreground: 190 70% 10%;
+  --primary: 177 80% 28%;
+  --primary-foreground: 0 0% 100%;
+  --muted: 160 30% 92%;
+  --muted-foreground: 187 20% 35%;
+  --border: 170 25% 78%;
+  --radius: 0.9rem;
+}
+
+* {
+  border-color: hsl(var(--border));
+}
+
+body {
+  margin: 0;
+  background: radial-gradient(circle at 20% 20%, rgba(15, 118, 110, 0.18), transparent 42%),
+    radial-gradient(circle at 80% 0%, rgba(245, 158, 11, 0.25), transparent 38%),
+    hsl(var(--background));
+  color: hsl(var(--foreground));
+  font-family: "Manrope", "Noto Sans SC", sans-serif;
+}
+
+.bg-grid {
+  background-image: linear-gradient(to right, rgba(15, 118, 110, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(15, 118, 110, 0.08) 1px, transparent 1px);
+  background-size: 28px 28px;
+}

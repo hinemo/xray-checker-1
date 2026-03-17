@@ -131,6 +131,7 @@ type originalLinkData struct {
 	Type          string
 	Path          string
 	Host          string
+	Mode          string
 	AllowInsecure bool
 }
 
@@ -142,6 +143,7 @@ type parsedLink struct {
 	Type          string
 	Path          string
 	Host          string
+	Mode          string
 	AllowInsecure bool
 }
 
@@ -567,6 +569,7 @@ func (p *Parser) parseOriginalLinks(rawData []byte) map[string]*originalLinkData
 				Type:          data.Type,
 				Path:          data.Path,
 				Host:          data.Host,
+				Mode:          data.Mode,
 				AllowInsecure: data.AllowInsecure,
 			}
 		}
@@ -606,6 +609,7 @@ func (p *Parser) parseShareLink(link string) *parsedLink {
 	result.Encryption = query.Get("encryption")
 	result.Path = query.Get("path")
 	result.Host = query.Get("host")
+	result.Mode = query.Get("mode")
 	result.AllowInsecure = query.Get("allowInsecure") == "1" || query.Get("allowInsecure") == "true"
 
 	return result
@@ -653,6 +657,9 @@ func (p *Parser) parseVMessLink(link string) *parsedLink {
 	}
 	if path, ok := vmess["path"].(string); ok {
 		result.Path = path
+	}
+	if mode, ok := vmess["mode"].(string); ok {
+		result.Mode = mode
 	}
 
 	return result
@@ -843,6 +850,37 @@ func (p *Parser) convertOutbound(raw json.RawMessage, index int, originalData ma
 				pc.Encryption = orig.Encryption
 			}
 		}
+		if pc.Type == "" && orig.Type != "" {
+			pc.Type = orig.Type
+		}
+		if pc.Path == "" && orig.Path != "" {
+			pc.Path = orig.Path
+		}
+		if pc.Host == "" && orig.Host != "" {
+			pc.Host = orig.Host
+		}
+		if pc.Mode == "" && orig.Mode != "" {
+			pc.Mode = orig.Mode
+		}
+
+		if (pc.Type == "xhttp" || pc.Type == "splithttp") && pc.RawXhttpSettings == "" {
+			raw := map[string]string{}
+			if pc.Path != "" {
+				raw["path"] = pc.Path
+			}
+			if pc.Host != "" {
+				raw["host"] = pc.Host
+			}
+			if pc.Mode != "" {
+				raw["mode"] = pc.Mode
+			}
+			if len(raw) > 0 {
+				if rawJSON, err := json.Marshal(raw); err == nil {
+					pc.RawXhttpSettings = string(rawJSON)
+				}
+			}
+		}
+
 		if orig.AllowInsecure {
 			pc.AllowInsecure = true
 		}

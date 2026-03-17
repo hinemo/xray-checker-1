@@ -75,6 +75,20 @@ services:
 
 Detailed installation and configuration documentation is available at [xray-checker.kutovoy.dev](https://xray-checker.kutovoy.dev/intro/quick-start)
 
+### Local Development (Without Docker)
+
+You can run backend and frontend locally with the new UI stack:
+
+- Frontend: React + shadcn/ui + Tailwind CSS + Recharts + D3.js
+- Backend: Go service (same API and checker core)
+
+```powershell
+./scripts/setup-local.ps1
+./scripts/run-local.ps1 -SubscriptionUrl "https://your-subscription-url"
+```
+
+Detailed local guide: [LOCAL_RUN.md](LOCAL_RUN.md)
+
 ## 📈 Project Statistics
 
 <a href="https://star-history.com/#kutovoys/xray-checker&Date">

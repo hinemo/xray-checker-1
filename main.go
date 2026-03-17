@@ -2,6 +2,8 @@ package main
 
 import (
 	"net/http"
+	"os"
+	"path/filepath"
 	"strings"
 	"time"
 	"xray-checker/checker"
@@ -34,7 +36,16 @@ func main() {
 		logger.Startup("Log level: none (silent mode)")
 	}
 
-	if err := web.InitAssetLoader(config.CLIConfig.Web.CustomAssetsPath); err != nil {
+	customAssetsPath := config.CLIConfig.Web.CustomAssetsPath
+	if customAssetsPath == "" {
+		autoFrontendDist := filepath.Join("frontend", "dist")
+		if stat, err := os.Stat(autoFrontendDist); err == nil && stat.IsDir() {
+			customAssetsPath = autoFrontendDist
+			logger.Info("Auto-detected frontend assets: %s", customAssetsPath)
+		}
+	}
+
+	if err := web.InitAssetLoader(customAssetsPath); err != nil {
 		logger.Fatal("Failed to initialize custom assets: %v", err)
 	}
 
@@ -165,6 +176,7 @@ func main() {
 	}
 	mux.Handle("/health", web.HealthHandler())
 	mux.Handle("/static/", web.StaticHandler())
+	mux.Handle("/assets/", web.StaticHandler())
 	mux.Handle("/api/v1/public/proxies", web.APIPublicProxiesHandler(proxyChecker))
 
 	web.RegisterConfigEndpoints(*proxyConfigs, proxyChecker, config.CLIConfig.Xray.StartPort)

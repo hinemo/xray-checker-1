@@ -13,7 +13,17 @@ var staticFiles embed.FS
 
 func StaticHandler() http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
-		filePath := strings.TrimPrefix(r.URL.Path, "/static/")
+		filePath := ""
+		switch {
+		case strings.HasPrefix(r.URL.Path, "/static/"):
+			filePath = strings.TrimPrefix(r.URL.Path, "/static/")
+		case strings.HasPrefix(r.URL.Path, "/assets/"):
+			filePath = strings.TrimPrefix(r.URL.Path, "/")
+		default:
+			http.NotFound(w, r)
+			return
+		}
+
 		if filePath == "" {
 			http.NotFound(w, r)
 			return

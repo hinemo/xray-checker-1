@@ -56,33 +56,41 @@ func (a *AssetLoader) load() error {
 
 	logger.Info("Custom assets enabled: %s", a.basePath)
 
-	entries, err := os.ReadDir(a.basePath)
-	if err != nil {
-		return fmt.Errorf("error reading custom assets directory: %w", err)
-	}
-
 	var loadedFiles []string
-
-	for _, entry := range entries {
-		if entry.IsDir() {
-			continue
+	err = filepath.WalkDir(a.basePath, func(path string, d os.DirEntry, walkErr error) error {
+		if walkErr != nil {
+			logger.Warn("Failed to access custom asset path %s: %v", path, walkErr)
+			return nil
 		}
 
-		name := entry.Name()
-		filePath := filepath.Join(a.basePath, name)
+		if d.IsDir() {
+			return nil
+		}
 
-		data, err := os.ReadFile(filePath)
+		relPath, err := filepath.Rel(a.basePath, path)
+		if err != nil {
+			logger.Warn("Failed to resolve relative path for %s: %v", path, err)
+			return nil
+		}
+
+		name := filepath.ToSlash(relPath)
+		data, err := os.ReadFile(path)
 		if err != nil {
 			logger.Warn("Failed to read custom asset %s: %v", name, err)
-			continue
+			return nil
 		}
 
 		a.files[name] = data
 		loadedFiles = append(loadedFiles, name)
 
-		if name == "custom.css" {
+		if filepath.Base(name) == "custom.css" {
 			a.hasCustomCSS = true
 		}
+
+		return nil
+	})
+	if err != nil {
+		return fmt.Errorf("error walking custom assets directory: %w", err)
 	}
 
 	if len(loadedFiles) > 0 {
