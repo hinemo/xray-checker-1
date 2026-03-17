@@ -9,6 +9,7 @@ require (
 	github.com/prometheus/common v0.64.0
 	github.com/xtls/libxray v0.0.0-20251227071437-55f9ac38eb66
 	github.com/xtls/xray-core v1.251208.0
+	modernc.org/sqlite v1.39.0
 )
 
 require (

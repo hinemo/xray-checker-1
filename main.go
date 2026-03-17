@@ -11,6 +11,7 @@ import (
 	"xray-checker/logger"
 	"xray-checker/metrics"
 	"xray-checker/models"
+	"xray-checker/storage"
 	"xray-checker/subscription"
 	"xray-checker/web"
 	"xray-checker/xray"
@@ -58,6 +59,27 @@ func main() {
 	proxyConfigs, err := subscription.InitializeConfiguration(configFile, version)
 	if err != nil {
 		logger.Fatal("Error initializing configuration: %v", err)
+	}
+
+	var dbStore *storage.SQLiteStore
+	if config.CLIConfig.Database.Enabled {
+		dbStore, err = storage.NewSQLiteStore(config.CLIConfig.Database.Path)
+		if err != nil {
+			logger.Fatal("Failed to initialize SQLite storage: %v", err)
+		}
+		defer func() {
+			if closeErr := dbStore.Close(); closeErr != nil {
+				logger.Error("Failed to close SQLite storage: %v", closeErr)
+			}
+		}()
+
+		if err := dbStore.SyncSubscriptions(config.CLIConfig.Subscription.URLs, *proxyConfigs); err != nil {
+			logger.Error("Failed to persist subscriptions: %v", err)
+		}
+		if err := dbStore.ReplaceNodes(*proxyConfigs); err != nil {
+			logger.Error("Failed to persist nodes: %v", err)
+		}
+		logger.Info("SQLite persistence enabled: %s", config.CLIConfig.Database.Path)
 	}
 
 	logger.Info("Loaded %d proxy configurations", len(*proxyConfigs))
@@ -113,6 +135,12 @@ func main() {
 		logger.Info("Starting proxy check iteration")
 		proxyChecker.CheckAllProxies()
 
+		if dbStore != nil {
+			if err := dbStore.SaveNodeChecks(collectCheckResults(proxyChecker)); err != nil {
+				logger.Error("Failed to persist node checks: %v", err)
+			}
+		}
+
 		if config.CLIConfig.Metrics.PushURL != "" {
 			pushConfig, err := metrics.ParseURL(config.CLIConfig.Metrics.PushURL)
 			if err != nil {
@@ -160,7 +188,7 @@ func main() {
 			}
 
 			if !xray.IsConfigsEqual(*proxyConfigs, newConfigs) {
-				if err := updateConfiguration(newConfigs, proxyConfigs, xrayRunner, proxyChecker); err != nil {
+				if err := updateConfiguration(newConfigs, proxyConfigs, xrayRunner, proxyChecker, dbStore); err != nil {
 					logger.Error("Error updating configuration: %v", err)
 				}
 			} else {
@@ -227,7 +255,7 @@ func main() {
 }
 
 func updateConfiguration(newConfigs []*models.ProxyConfig, currentConfigs *[]*models.ProxyConfig,
-	xrayRunner *xray.Runner, proxyChecker *checker.ProxyChecker) error {
+	xrayRunner *xray.Runner, proxyChecker *checker.ProxyChecker, dbStore *storage.SQLiteStore) error {
 
 	logger.Info("Subscription changed, updating configuration...")
 
@@ -256,8 +284,42 @@ func updateConfiguration(newConfigs []*models.ProxyConfig, currentConfigs *[]*mo
 
 	*currentConfigs = newConfigs
 
+	if dbStore != nil {
+		if err := dbStore.SyncSubscriptions(config.CLIConfig.Subscription.URLs, newConfigs); err != nil {
+			logger.Error("Failed to persist subscriptions: %v", err)
+		}
+		if err := dbStore.ReplaceNodes(newConfigs); err != nil {
+			logger.Error("Failed to persist nodes: %v", err)
+		}
+	}
+
 	web.RegisterConfigEndpoints(newConfigs, proxyChecker, config.CLIConfig.Xray.StartPort)
 
 	logger.Info("Configuration updated: %d proxies", len(newConfigs))
 	return nil
+}
+
+func collectCheckResults(proxyChecker *checker.ProxyChecker) []storage.NodeCheckResult {
+	proxies := proxyChecker.GetProxies()
+	results := make([]storage.NodeCheckResult, 0, len(proxies))
+
+	for _, proxy := range proxies {
+		if proxy.StableID == "" {
+			proxy.StableID = proxy.GenerateStableID()
+		}
+
+		online, latency, err := proxyChecker.GetProxyStatus(proxy.Name)
+		if err != nil {
+			online = false
+			latency = 0
+		}
+
+		results = append(results, storage.NodeCheckResult{
+			StableID:  proxy.StableID,
+			Online:    online,
+			LatencyMs: latency.Milliseconds(),
+		})
+	}
+
+	return results
 }

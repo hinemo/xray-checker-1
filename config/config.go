@@ -63,6 +63,11 @@ type CLI struct {
 		CustomAssetsPath  string `name:"web-custom-assets-path" help:"Path to custom assets directory (logo.svg, favicon.ico, custom.css, index.html)" default:"" env:"WEB_CUSTOM_ASSETS_PATH"`
 	} `embed:"" prefix:""`
 
+	Database struct {
+		Enabled bool   `name:"db-enabled" help:"Enable SQLite persistence for subscriptions and nodes" default:"true" env:"DB_ENABLED"`
+		Path    string `name:"db-path" help:"Path to SQLite database file" default:"data/xray-checker.db" env:"DB_PATH"`
+	} `embed:"" prefix:""`
+
 	Version  VersionFlag `name:"version" help:"Print version information and quit"`
 	RunOnce  bool        `name:"run-once" help:"Run one check cycle and exit" default:"false" env:"RUN_ONCE"`
 	LogLevel string      `name:"log-level" help:"Log level (debug|info|warn|error|none)" default:"info" env:"LOG_LEVEL"`
