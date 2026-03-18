@@ -157,6 +157,8 @@ func GetContentType(filename string) string {
 		return "text/html; charset=utf-8"
 	case strings.HasSuffix(filename, ".json"):
 		return "application/json; charset=utf-8"
+	case strings.HasSuffix(filename, ".webmanifest"):
+		return "application/manifest+json"
 	case strings.HasSuffix(filename, ".woff2"):
 		return "font/woff2"
 	case strings.HasSuffix(filename, ".woff"):

@@ -23,7 +23,7 @@ func Parse(version string) {
 
 type CLI struct {
 	Subscription struct {
-		URLs           []string `name:"subscription-url" help:"URL(s) of the subscription (can be specified multiple times)" required:"true" env:"SUBSCRIPTION_URL"`
+		URLs           []string `name:"subscription-url" help:"URL(s) of the subscription (can be specified multiple times)" env:"SUBSCRIPTION_URL"`
 		Update         bool     `name:"subscription-update" help:"Whether to recheck the subscription" default:"true" env:"SUBSCRIPTION_UPDATE"`
 		UpdateInterval int      `name:"subscription-update-interval" help:"Interval for subscription updates in seconds" default:"300" env:"SUBSCRIPTION_UPDATE_INTERVAL"`
 	} `embed:"" prefix:""`

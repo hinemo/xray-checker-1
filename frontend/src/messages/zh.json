@@ -1,0 +1,165 @@
+{
+  "app": {
+    "title": "Xray Checker",
+    "subtitle": "代理健康指挥台",
+    "refresh": "刷新",
+    "publicMode": "公共模式",
+    "apiDocs": "API 文档",
+    "lastUpdated": "更新时间",
+    "loading": "加载中..."
+  },
+  "stats": {
+    "onlineRate": "在线率",
+    "online": "在线",
+    "offline": "离线",
+    "avgLatency": "平均延迟",
+    "currentIp": "当前出口 IP"
+  },
+  "sections": {
+    "overview": "概览",
+    "latency": "延迟分布",
+    "nodes": "代理节点",
+    "runtime": "运行配置",
+    "trend": "在线趋势"
+  },
+  "filters": {
+    "search": "搜索",
+    "searchPlaceholder": "按名称或 ID 搜索",
+    "status": "状态",
+    "subscription": "订阅",
+    "all": "全部",
+    "online": "在线",
+    "offline": "离线"
+  },
+  "actions": {
+    "check": "手动检测",
+    "reload": "启动订阅",
+    "copy": "复制 ID",
+    "clear": "清除选择",
+    "checkSuccess": "检测已触发",
+    "checkFailed": "检测失败",
+    "reloadSuccess": "订阅已启动",
+    "reloadFailed": "启动失败",
+    "copySuccess": "已复制 ID",
+    "copyFailed": "复制失败",
+    "copyDetail": "复制详情",
+    "copyDetailSuccess": "详情已复制"
+  },
+  "nav": {
+    "overview": "概览",
+    "runtime": "运行",
+    "trend": "趋势",
+    "nodes": "节点",
+    "filters": "筛选",
+    "subscriptions": "订阅",
+    "actions": "操作"
+  },
+  "subscriptions": {
+    "title": "订阅管理",
+    "placeholder": "粘贴订阅地址",
+    "add": "添加",
+    "delete": "删除",
+    "refresh": "刷新",
+    "activate": "应用订阅",
+    "activateHint": "读取数据库中的订阅并启动",
+    "empty": "暂无保存的订阅。",
+    "unavailable": "数据库未启用，无法管理订阅。",
+    "added": "订阅已添加",
+    "deleted": "订阅已删除",
+    "addFailed": "添加失败",
+    "deleteFailed": "删除失败",
+    "refreshed": "订阅已刷新",
+    "refreshFailed": "刷新失败",
+    "invalid": "请输入订阅地址",
+    "activated": "订阅已应用",
+    "activateFailed": "应用失败",
+    "groupsTitle": "订阅分组",
+    "groupName": "名称",
+    "groupNodes": "节点数",
+    "groupUpdated": "最近更新时间",
+    "groupChecked": "最近检测"
+  },
+  "schedule": {
+    "autoFetch": "定时拉取订阅",
+    "autoFetchHint": "订阅获取为手动触发，可开启定时拉取。",
+    "autoCheck": "定时检测节点",
+    "autoCheckHint": "定期执行节点健康检测。",
+    "enabled": "启用",
+    "minutes": "分钟",
+    "nextRun": "下次执行",
+    "runs": "执行次数",
+    "failures": "失败次数",
+    "lastResult": "最近结果",
+    "lastSuccess": "成功",
+    "lastFailed": "失败",
+    "storage": "存储",
+    "db": "数据库",
+    "local": "本地",
+    "savedAt": "保存时间",
+    "saving": "保存中...",
+    "localHint": "数据库未启用，定时设置暂存本地。",
+    "saveFailed": "定时保存失败"
+  },
+  "actionsLog": {
+    "title": "操作日志",
+    "filterAction": "操作",
+    "filterStatus": "状态",
+    "filterQuery": "搜索",
+    "filterQueryPlaceholder": "搜索操作或说明",
+    "filterAll": "全部",
+    "statusSuccess": "成功",
+    "statusFailed": "失败",
+    "statusStarted": "开始",
+    "empty": "暂无操作记录。",
+    "unavailable": "数据库未启用，无法查看操作日志。"
+  },
+  "pwa": {
+    "updateReady": "检测到更新，刷新以获取最新界面。",
+    "reload": "刷新"
+  },
+  "bulk": {
+    "selected": "已选",
+    "selectAll": "全选"
+  },
+  "details": {
+    "title": "节点详情",
+    "name": "名称",
+    "id": "稳定 ID",
+    "status": "状态",
+    "latency": "延迟",
+    "server": "服务器",
+    "protocol": "协议",
+    "port": "端口",
+    "proxyPort": "代理端口",
+    "subscription": "订阅",
+    "close": "关闭"
+  },
+  "runtime": {
+    "version": "版本",
+    "uptime": "运行时长",
+    "method": "检测方式",
+    "interval": "检测间隔",
+    "timeout": "超时",
+    "startPort": "起始端口",
+    "updates": "订阅更新",
+    "updateEvery": "更新间隔",
+    "on": "开启",
+    "off": "关闭",
+    "total": "总数"
+  },
+  "table": {
+    "name": "名称",
+    "status": "状态",
+    "latency": "延迟",
+    "sub": "订阅"
+  },
+  "status": {
+    "online": "在线",
+    "offline": "离线",
+    "unknown": "未知"
+  },
+  "empty": {
+    "title": "暂无数据",
+    "body": "暂无代理节点，请先添加订阅并启动检测。"
+  }
+}

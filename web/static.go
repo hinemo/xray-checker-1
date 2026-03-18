@@ -19,6 +19,10 @@ func StaticHandler() http.HandlerFunc {
 			filePath = strings.TrimPrefix(r.URL.Path, "/static/")
 		case strings.HasPrefix(r.URL.Path, "/assets/"):
 			filePath = strings.TrimPrefix(r.URL.Path, "/")
+		case strings.HasPrefix(r.URL.Path, "/_next/"):
+			filePath = strings.TrimPrefix(r.URL.Path, "/")
+		case r.URL.Path == "/favicon.svg" || r.URL.Path == "/icon.svg" || r.URL.Path == "/manifest.webmanifest" || r.URL.Path == "/sw.js":
+			filePath = strings.TrimPrefix(r.URL.Path, "/")
 		default:
 			http.NotFound(w, r)
 			return

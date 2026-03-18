@@ -64,6 +64,29 @@ type SystemIPResponse struct {
 	IP string `json:"ip"`
 }
 
+type SubscriptionGroupInfo struct {
+	Name          string `json:"name"`
+	NodeCount     int    `json:"nodeCount"`
+	LastUpdatedAt string `json:"lastUpdatedAt"`
+	LastCheckedAt string `json:"lastCheckedAt"`
+}
+
+type ScheduleSettingsResponse struct {
+	AutoFetchEnabled bool   `json:"autoFetchEnabled"`
+	AutoFetchMinutes int    `json:"autoFetchMinutes"`
+	AutoCheckEnabled bool   `json:"autoCheckEnabled"`
+	AutoCheckMinutes int    `json:"autoCheckMinutes"`
+	UpdatedAt        string `json:"updatedAt"`
+}
+
+type ActionLogInfo struct {
+	ID        int    `json:"id"`
+	Action    string `json:"action"`
+	Status    string `json:"status"`
+	Message   string `json:"message"`
+	CreatedAt string `json:"createdAt"`
+}
+
 type APIResponse struct {
 	Success bool        `json:"success"`
 	Data    interface{} `json:"data,omitempty"`

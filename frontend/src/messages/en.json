@@ -1,0 +1,165 @@
+{
+  "app": {
+    "title": "Xray Checker",
+    "subtitle": "Proxy health command center",
+    "refresh": "Refresh",
+    "publicMode": "Public mode",
+    "apiDocs": "API Docs",
+    "lastUpdated": "Last updated",
+    "loading": "Loading..."
+  },
+  "stats": {
+    "onlineRate": "Online rate",
+    "online": "Online",
+    "offline": "Offline",
+    "avgLatency": "Avg latency",
+    "currentIp": "Current IP"
+  },
+  "sections": {
+    "overview": "Overview",
+    "latency": "Latency distribution",
+    "nodes": "Proxy nodes",
+    "runtime": "Runtime config",
+    "trend": "Online trend"
+  },
+  "filters": {
+    "search": "Search",
+    "searchPlaceholder": "Search by name or ID",
+    "status": "Status",
+    "subscription": "Subscription",
+    "all": "All",
+    "online": "Online",
+    "offline": "Offline"
+  },
+  "actions": {
+    "check": "Run Check",
+    "reload": "Activate Subscriptions",
+    "copy": "Copy IDs",
+    "clear": "Clear selection",
+    "checkSuccess": "Check started",
+    "checkFailed": "Check failed",
+    "reloadSuccess": "Activation successful",
+    "reloadFailed": "Activation failed",
+    "copySuccess": "IDs copied",
+    "copyFailed": "Copy failed",
+    "copyDetail": "Copy details",
+    "copyDetailSuccess": "Details copied"
+  },
+  "nav": {
+    "overview": "Overview",
+    "runtime": "Runtime",
+    "trend": "Trend",
+    "nodes": "Nodes",
+    "filters": "Filters",
+    "subscriptions": "Subscriptions",
+    "actions": "Actions"
+  },
+  "subscriptions": {
+    "title": "Subscriptions",
+    "placeholder": "Paste subscription URL",
+    "add": "Add",
+    "delete": "Delete",
+    "refresh": "Refresh",
+    "activate": "Activate",
+    "activateHint": "Apply stored subscriptions",
+    "empty": "No subscriptions stored yet.",
+    "unavailable": "Database is disabled. Enable SQLite to manage subscriptions.",
+    "added": "Subscription added",
+    "deleted": "Subscription deleted",
+    "addFailed": "Add failed",
+    "deleteFailed": "Delete failed",
+    "refreshed": "Subscription refreshed",
+    "refreshFailed": "Refresh failed",
+    "invalid": "Subscription URL is required",
+    "activated": "Subscriptions activated",
+    "activateFailed": "Activation failed",
+    "groupsTitle": "Subscription groups",
+    "groupName": "Name",
+    "groupNodes": "Nodes",
+    "groupUpdated": "Last updated",
+    "groupChecked": "Last checked"
+  },
+  "schedule": {
+    "autoFetch": "Auto fetch subscriptions",
+    "autoFetchHint": "Manual start required. Enable a timer to fetch subscriptions automatically.",
+    "autoCheck": "Auto check nodes",
+    "autoCheckHint": "Run periodic health checks for all nodes.",
+    "enabled": "Enabled",
+    "minutes": "minutes",
+    "nextRun": "Next run",
+    "runs": "Runs",
+    "failures": "Failures",
+    "lastResult": "Last result",
+    "lastSuccess": "Success",
+    "lastFailed": "Failed",
+    "storage": "Storage",
+    "db": "Database",
+    "local": "Local",
+    "savedAt": "Saved",
+    "saving": "Saving...",
+    "localHint": "Database is disabled, schedule settings are stored locally.",
+    "saveFailed": "Schedule save failed"
+  },
+  "actionsLog": {
+    "title": "Action log",
+    "filterAction": "Action",
+    "filterStatus": "Status",
+    "filterQuery": "Search",
+    "filterQueryPlaceholder": "Search action or message",
+    "filterAll": "All",
+    "statusSuccess": "Success",
+    "statusFailed": "Failed",
+    "statusStarted": "Started",
+    "empty": "No actions yet.",
+    "unavailable": "Database is disabled, action log unavailable."
+  },
+  "pwa": {
+    "updateReady": "An update is ready. Refresh to load the latest UI.",
+    "reload": "Reload"
+  },
+  "bulk": {
+    "selected": "Selected",
+    "selectAll": "Select all"
+  },
+  "details": {
+    "title": "Node Details",
+    "name": "Name",
+    "id": "Stable ID",
+    "status": "Status",
+    "latency": "Latency",
+    "server": "Server",
+    "protocol": "Protocol",
+    "port": "Port",
+    "proxyPort": "Proxy Port",
+    "subscription": "Subscription",
+    "close": "Close"
+  },
+  "runtime": {
+    "version": "Version",
+    "uptime": "Uptime",
+    "method": "Method",
+    "interval": "Interval",
+    "timeout": "Timeout",
+    "startPort": "Start port",
+    "updates": "Updates",
+    "updateEvery": "Update every",
+    "on": "On",
+    "off": "Off",
+    "total": "Total"
+  },
+  "table": {
+    "name": "Name",
+    "status": "Status",
+    "latency": "Latency",
+    "sub": "Subscription"
+  },
+  "status": {
+    "online": "Online",
+    "offline": "Offline",
+    "unknown": "Unknown"
+  },
+  "empty": {
+    "title": "No data",
+    "body": "No proxies available yet. Add subscriptions and start checks."
+  }
+}

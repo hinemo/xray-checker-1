@@ -1,0 +1,1148 @@
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 1.22kB done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/golang:1.25-alpine
+#2 ...
+
+#3 [internal] load metadata for docker.io/library/alpine:3.21
+#3 DONE 0.4s
+
+#2 [internal] load metadata for docker.io/library/golang:1.25-alpine
+#2 DONE 0.4s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 160B done
+#4 DONE 0.0s
+
+#5 [builder 1/8] FROM docker.io/library/golang:1.25-alpine@sha256:8e02eb337d9e0ea459e041f1ee5eece41cbb61f1d83e7d883a3e2fb4862063fa
+#5 CACHED
+
+#6 [stage-1 1/4] FROM docker.io/library/alpine:3.21@sha256:c3f8e73fdb79deaebaa2037150150191b9dcbfba68b4a46d70103204c53f4709
+#6 CACHED
+
+#7 [internal] load build context
+#7 transferring context: 10.75kB done
+#7 DONE 0.0s
+
+#8 [builder 2/8] RUN apk add --no-cache upx
+#8 ...
+
+#9 [stage-1 2/4] RUN apk add --no-cache ca-certificates curl tzdata &&   adduser -D -u 1000 appuser &&   mkdir -p /app/geo &&   chown -R appuser:appuser /app
+#9 0.482 fetch https://dl-cdn.alpinelinux.org/alpine/v3.21/main/x86_64/APKINDEX.tar.gz
+#9 3.323 fetch https://dl-cdn.alpinelinux.org/alpine/v3.21/community/x86_64/APKINDEX.tar.gz
+#9 3.853 WARNING: fetching https://dl-cdn.alpinelinux.org/alpine/v3.21/community: IO ERROR
+#9 3.870 (1/11) Installing ca-certificates (20250911-r0)
+#9 6.223 (2/11) Installing brotli-libs (1.1.0-r2)
+#9 7.043 (3/11) Installing c-ares (1.34.6-r0)
+#9 7.774 (4/11) Installing libunistring (1.2-r0)
+#9 9.395 (5/11) Installing libidn2 (2.3.7-r0)
+#9 ...
+
+#8 [builder 2/8] RUN apk add --no-cache upx
+#8 9.961 (1/3) Installing libgcc (15.2.0-r2)
+#8 10.54 (2/3) Installing libstdc++ (15.2.0-r2)
+#8 12.61 (3/3) Installing upx (5.0.2-r0)
+#8 ...
+
+#9 [stage-1 2/4] RUN apk add --no-cache ca-certificates curl tzdata &&   adduser -D -u 1000 appuser &&   mkdir -p /app/geo &&   chown -R appuser:appuser /app
+#9 10.15 (6/11) Installing nghttp2-libs (1.64.0-r0)
+#9 10.69 (7/11) Installing libpsl (0.21.5-r3)
+#9 10.95 (8/11) Installing zstd-libs (1.5.6-r2)
+#9 11.80 (9/11) Installing libcurl (8.14.1-r2)
+#9 12.73 (10/11) Installing curl (8.14.1-r2)
+#9 13.38 (11/11) Installing tzdata (2026a-r0)
+#9 14.05 Executing busybox-1.37.0-r14.trigger
+#9 14.05 Executing ca-certificates-20250911-r0.trigger
+#9 14.07 OK: 12 MiB in 26 packages
+#9 DONE 14.1s
+
+#10 [stage-1 3/4] WORKDIR /app
+#10 DONE 0.0s
+
+#8 [builder 2/8] RUN apk add --no-cache upx
+#8 14.27 Executing busybox-1.37.0-r30.trigger
+#8 14.27 OK: 13.7 MiB in 20 packages
+#8 DONE 14.3s
+
+#11 [builder 3/8] WORKDIR /app
+#11 DONE 0.0s
+
+#12 [builder 4/8] COPY go.mod go.sum ./
+#12 DONE 0.0s
+
+#13 [builder 5/8] RUN go mod download
+#13 DONE 11.3s
+
+#14 [builder 6/8] COPY . .
+#14 DONE 0.1s
+
+#15 [builder 7/8] RUN ls -R && go mod tidy
+#15 0.630 .:
+#15 0.630 CODE_OF_CONDUCT.md
+#15 0.630 CONTRIBUTING.md
+#15 0.630 Dockerfile
+#15 0.630 LICENSE
+#15 0.630 LOCAL_RUN.md
+#15 0.630 README.md
+#15 0.630 README_RU.md
+#15 0.630 SECURITY.md
+#15 0.630 build.log
+#15 0.630 checker
+#15 0.630 config
+#15 0.630 docs
+#15 0.630 frontend
+#15 0.630 go.mod
+#15 0.630 go.sum
+#15 0.630 logger
+#15 0.630 main.go
+#15 0.630 metrics
+#15 0.630 models
+#15 0.630 scripts
+#15 0.630 storage
+#15 0.630 subscription
+#15 0.630 web
+#15 0.630 xray
+#15 0.630 
+#15 0.630 ./checker:
+#15 0.630 checker.go
+#15 0.630 
+#15 0.630 ./config:
+#15 0.630 config.go
+#15 0.630 
+#15 0.630 ./docs:
+#15 0.630 README.md
+#15 0.630 astro.config.mjs
+#15 0.630 package-lock.json
+#15 0.630 package.json
+#15 0.630 pnpm-lock.yaml
+#15 0.630 public
+#15 0.630 src
+#15 0.630 tsconfig.json
+#15 0.630 
+#15 0.630 ./docs/public:
+#15 0.630 apple-touch-icon.png
+#15 0.630 favicon-96x96.png
+#15 0.630 favicon.ico
+#15 0.630 favicon.svg
+#15 0.630 site.webmanifest
+#15 0.630 web-app-manifest-192x192.png
+#15 0.630 web-app-manifest-512x512.png
+#15 0.630 
+#15 0.630 ./docs/src:
+#15 0.630 assets
+#15 0.630 components
+#15 0.630 content
+#15 0.630 content.config.ts
+#15 0.630 styles
+#15 0.630 
+#15 0.630 ./docs/src/assets:
+#15 0.630 blancvpn.png
+#15 0.630 houston.webp
+#15 0.630 logo-dark.svg
+#15 0.630 logo-light.svg
+#15 0.630 
+#15 0.630 ./docs/src/components:
+#15 0.630 BadgePlayground.astro
+#15 0.630 BlancVPNLink.astro
+#15 0.630 
+#15 0.630 ./docs/src/content:
+#15 0.630 docs
+#15 0.630 
+#15 0.630 ./docs/src/content/docs:
+#15 0.630 badges
+#15 0.630 configuration
+#15 0.630 contributing
+#15 0.630 fa
+#15 0.630 index.mdx
+#15 0.630 integrations
+#15 0.630 intro
+#15 0.630 ru
+#15 0.630 usage
+#15 0.630 
+#15 0.630 ./docs/src/content/docs/badges:
+#15 0.630 overview.md
+#15 0.630 playground.mdx
+#15 0.630 
+#15 0.630 ./docs/src/content/docs/configuration:
+#15 0.630 advanced-conf.md
+#15 0.630 check-methods.md
+#15 0.630 envs.md
+#15 0.630 status-page.md
+#15 0.630 subscription.md
+#15 0.631 web-customization.md
+#15 0.631 
+#15 0.631 ./docs/src/content/docs/contributing:
+#15 0.631 guide.md
+#15 0.631 
+#15 0.631 ./docs/src/content/docs/fa:
+#15 0.631 badges
+#15 0.631 configuration
+#15 0.631 contributing
+#15 0.631 index.mdx
+#15 0.631 integrations
+#15 0.631 intro
+#15 0.631 usage
+#15 0.631 
+#15 0.631 ./docs/src/content/docs/fa/badges:
+#15 0.631 overview.md
+#15 0.631 playground.mdx
+#15 0.631 
+#15 0.631 ./docs/src/content/docs/fa/configuration:
+#15 0.631 advanced-conf.md
+#15 0.631 check-methods.md
+#15 0.631 envs.md
+#15 0.631 status-page.md
+#15 0.631 subscription.md
+#15 0.631 web-customization.md
+#15 0.631 
+#15 0.631 ./docs/src/content/docs/fa/contributing:
+#15 0.631 guide.md
+#15 0.631 
+#15 0.631 ./docs/src/content/docs/fa/integrations:
+#15 0.631 alternatives.md
+#15 0.631 grafana.md
+#15 0.631 metrics.md
+#15 0.631 prometheus.md
+#15 0.631 uptime-kuma.md
+#15 0.631 
+#15 0.631 ./docs/src/content/docs/fa/intro:
+#15 0.631 architecture.md
+#15 0.631 features.md
+#15 0.631 quick-start.md
+#15 0.631 
+#15 0.631 ./docs/src/content/docs/fa/usage:
+#15 0.631 api-reference.md
+#15 0.631 cli.md
+#15 0.631 docker.md
+#15 0.631 github-actions.md
+#15 0.631 troubleshooting.md
+#15 0.631 
+#15 0.631 ./docs/src/content/docs/integrations:
+#15 0.631 alternatives.md
+#15 0.631 grafana.md
+#15 0.631 metrics.md
+#15 0.631 prometheus.md
+#15 0.631 uptime-kuma.md
+#15 0.631 
+#15 0.631 ./docs/src/content/docs/intro:
+#15 0.631 architecture.md
+#15 0.631 features.md
+#15 0.631 quick-start.md
+#15 0.631 
+#15 0.631 ./docs/src/content/docs/ru:
+#15 0.631 badges
+#15 0.631 configuration
+#15 0.631 contributing
+#15 0.631 index.mdx
+#15 0.631 integrations
+#15 0.631 intro
+#15 0.631 usage
+#15 0.631 
+#15 0.631 ./docs/src/content/docs/ru/badges:
+#15 0.631 overview.md
+#15 0.631 playground.mdx
+#15 0.631 
+#15 0.631 ./docs/src/content/docs/ru/configuration:
+#15 0.631 advanced-conf.md
+#15 0.631 check-methods.md
+#15 0.631 envs.md
+#15 0.631 status-page.md
+#15 0.631 subscription.md
+#15 0.631 web-customization.md
+#15 0.631 
+#15 0.631 ./docs/src/content/docs/ru/contributing:
+#15 0.631 guide.md
+#15 0.631 
+#15 0.631 ./docs/src/content/docs/ru/integrations:
+#15 0.631 alternatives.md
+#15 0.631 grafana.md
+#15 0.631 metrics.md
+#15 0.631 prometheus.md
+#15 0.631 uptime-kuma.md
+#15 0.631 
+#15 0.631 ./docs/src/content/docs/ru/intro:
+#15 0.631 architecture.md
+#15 0.631 features.md
+#15 0.631 quick-start.md
+#15 0.631 
+#15 0.631 ./docs/src/content/docs/ru/usage:
+#15 0.631 api-reference.md
+#15 0.631 cli.md
+#15 0.631 docker.md
+#15 0.631 github-actions.md
+#15 0.631 troubleshooting.md
+#15 0.631 
+#15 0.631 ./docs/src/content/docs/usage:
+#15 0.631 api-reference.md
+#15 0.631 cli.md
+#15 0.631 docker.md
+#15 0.631 github-actions.md
+#15 0.631 troubleshooting.md
+#15 0.631 
+#15 0.631 ./docs/src/styles:
+#15 0.631 custom.css
+#15 0.631 
+#15 0.631 ./frontend:
+#15 0.631 index.html
+#15 0.631 package-lock.json
+#15 0.631 package.json
+#15 0.631 postcss.config.cjs
+#15 0.631 src
+#15 0.631 tailwind.config.ts
+#15 0.631 tsconfig.json
+#15 0.631 vite.config.ts
+#15 0.631 
+#15 0.631 ./frontend/src:
+#15 0.631 App.tsx
+#15 0.631 components
+#15 0.631 lib
+#15 0.631 main.tsx
+#15 0.631 styles.css
+#15 0.631 vite-env.d.ts
+#15 0.631 
+#15 0.631 ./frontend/src/components:
+#15 0.631 ui
+#15 0.631 
+#15 0.631 ./frontend/src/components/ui:
+#15 0.631 badge.tsx
+#15 0.631 button.tsx
+#15 0.631 card.tsx
+#15 0.631 
+#15 0.631 ./frontend/src/lib:
+#15 0.631 utils.ts
+#15 0.631 
+#15 0.631 ./logger:
+#15 0.631 logger.go
+#15 0.631 
+#15 0.631 ./metrics:
+#15 0.631 metrics.go
+#15 0.631 
+#15 0.631 ./models:
+#15 0.631 proxy_config.go
+#15 0.631 
+#15 0.631 ./scripts:
+#15 0.631 run-local.ps1
+#15 0.631 setup-local.ps1
+#15 0.631 
+#15 0.631 ./storage:
+#15 0.631 sqlite.go
+#15 0.631 
+#15 0.631 ./subscription:
+#15 0.631 parser.go
+#15 0.631 parser_xhttp_test.go
+#15 0.631 subscription.go
+#15 0.631 
+#15 0.631 ./web:
+#15 0.631 api.go
+#15 0.631 assets.go
+#15 0.631 handlers.go
+#15 0.631 openapi.yaml
+#15 0.631 static
+#15 0.631 static.go
+#15 0.631 template.go
+#15 0.631 templates
+#15 0.631 
+#15 0.631 ./web/static:
+#15 0.631 TwemojiCountryFlags.woff2
+#15 0.631 alpine.min.js
+#15 0.631 apple-touch-icon.png
+#15 0.631 country-flag-emoji-polyfill.js
+#15 0.631 favicon-96x96.png
+#15 0.631 favicon.ico
+#15 0.631 favicon.svg
+#15 0.631 inter-regular.woff2
+#15 0.631 logo-dark.svg
+#15 0.631 logo-light.svg
+#15 0.631 site.webmanifest
+#15 0.631 swagger-ui-bundle.js
+#15 0.631 swagger-ui.css
+#15 0.631 tailwind.css
+#15 0.631 web-app-manifest-192x192.png
+#15 0.631 web-app-manifest-512x512.png
+#15 0.631 
+#15 0.631 ./web/templates:
+#15 0.631 index.html
+#15 0.631 
+#15 0.631 ./xray:
+#15 0.631 config.go
+#15 0.631 geo_files.go
+#15 0.631 runner.go
+#15 0.631 utils.go
+#15 0.693 go: downloading github.com/alecthomas/assert/v2 v2.11.0
+#15 0.693 go: downloading github.com/stretchr/testify v1.11.1
+#15 0.694 go: downloading github.com/alecthomas/repr v0.4.0
+#15 0.713 go: downloading github.com/google/go-cmp v0.7.0
+#15 0.716 go: downloading gopkg.in/check.v1 v1.0.0-20201130134442-10cb98267c6c
+#15 0.716 go: downloading modernc.org/libc v1.66.3
+#15 0.717 go: downloading github.com/google/pprof v0.0.0-20250317173921-a4b03ec1a45e
+#15 0.717 go: downloading modernc.org/fileutil v1.3.8
+#15 0.717 go: downloading modernc.org/mathutil v1.7.1
+#15 0.740 go: downloading github.com/kylelemons/godebug v1.1.0
+#15 0.744 go: downloading github.com/golang/mock v1.7.0-rc.1
+#15 0.804 go: downloading go.uber.org/mock v0.5.2
+#15 0.805 go: downloading github.com/xyproto/randomstring v1.0.5
+#15 0.823 go: downloading go.opentelemetry.io/otel v1.38.0
+#15 0.823 go: downloading go.opentelemetry.io/otel/sdk/metric v1.38.0
+#15 0.844 go: downloading github.com/golang/protobuf v1.5.4
+#15 0.844 go: downloading go.opentelemetry.io/otel/metric v1.38.0
+#15 0.845 go: downloading go.opentelemetry.io/otel/trace v1.38.0
+#15 0.845 go: downloading gonum.org/v1/gonum v0.16.0
+#15 1.542 go: downloading github.com/kr/pretty v0.3.1
+#15 1.798 go: downloading go.opentelemetry.io/otel/sdk v1.38.0
+#15 2.859 go: downloading github.com/hexops/gotextdiff v1.0.3
+#15 3.586 go: downloading github.com/rogpeppe/go-internal v1.10.0
+#15 3.586 go: downloading github.com/kr/text v0.2.0
+#15 3.609 go: downloading github.com/go-logr/logr v1.4.3
+#15 3.609 go: downloading github.com/go-logr/stdr v1.2.2
+#15 3.609 go: downloading go.opentelemetry.io/auto/sdk v1.2.1
+#15 4.342 go: downloading github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec
+#15 5.307 go: downloading github.com/dustin/go-humanize v1.0.1
+#15 5.307 go: downloading github.com/mattn/go-isatty v0.0.20
+#15 5.307 go: downloading modernc.org/memory v1.11.0
+#15 5.307 go: downloading golang.org/x/exp v0.0.0-20250620022241-b7579e27df2b
+#15 5.307 go: downloading github.com/ncruces/go-strftime v0.1.9
+#15 5.619 go: downloading modernc.org/cc/v4 v4.26.2
+#15 5.743 go: downloading modernc.org/ccgo/v4 v4.28.0
+#15 5.743 go: downloading modernc.org/goabi0 v0.2.0
+#15 5.744 go: downloading modernc.org/opt v0.1.4
+#15 5.744 go: downloading modernc.org/sortutil v1.2.1
+#15 5.744 go: downloading modernc.org/strutil v1.2.1
+#15 5.744 go: downloading modernc.org/token v1.1.0
+#15 5.964 go: downloading modernc.org/gc/v2 v2.6.5
+#15 DONE 6.2s
+
+#16 [builder 8/8] RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64   go build -v -ldflags="-s -w -X main.version=${GIT_TAG} -X main.commit=${GIT_COMMIT}" -o /usr/bin/xray-checker . &&   upx --best --lzma /usr/bin/xray-checker
+#16 0.592 internal/goarch
+#16 0.592 internal/unsafeheader
+#16 0.592 internal/byteorder
+#16 0.592 internal/godebugs
+#16 0.592 internal/goos
+#16 0.592 internal/profilerecord
+#16 0.592 internal/goexperiment
+#16 0.593 internal/coverage/rtcov
+#16 0.593 internal/asan
+#16 0.593 internal/msan
+#16 0.593 math/bits
+#16 0.593 internal/itoa
+#16 0.593 unicode/utf8
+#16 0.593 cmp
+#16 0.593 crypto/internal/fips140/alias
+#16 0.593 internal/trace/tracev2
+#16 0.593 encoding
+#16 0.593 unicode/utf16
+#16 0.594 log/internal
+#16 0.594 unicode
+#16 0.594 vendor/golang.org/x/crypto/internal/alias
+#16 0.594 container/list
+#16 0.594 vendor/golang.org/x/crypto/cryptobyte/asn1
+#16 0.595 internal/cpu
+#16 0.595 google.golang.org/protobuf/internal/flags
+#16 0.595 internal/platform
+#16 0.595 github.com/xtls/xray-core/common/signal/semaphore
+#16 0.595 internal/nettrace
+#16 0.596 crypto/internal/boring/sig
+#16 0.596 internal/goversion
+#16 0.596 internal/syslist
+#16 0.596 sync/atomic
+#16 0.606 github.com/xtls/xray-core/common/bitmask
+#16 0.607 github.com/sagernet/sing/common/x/constraints
+#16 0.607 github.com/sagernet/sing/common/debug
+#16 0.607 golang.org/x/crypto/internal/alias
+#16 0.608 google.golang.org/grpc/serviceconfig
+#16 0.609 google.golang.org/grpc/encoding/internal
+#16 0.610 github.com/quic-go/quic-go/internal/utils/ringbuffer
+#16 0.610 golang.org/x/net/internal/iana
+#16 0.611 github.com/klauspost/compress/internal/cpuinfo
+#16 0.612 internal/runtime/atomic
+#16 0.673 internal/runtime/math
+#16 0.673 internal/abi
+#16 0.674 internal/runtime/syscall
+#16 0.674 crypto/internal/fips140deps/byteorder
+#16 0.674 internal/runtime/gc
+#16 0.674 internal/runtime/sys
+#16 0.675 github.com/klauspost/compress/internal/le
+#16 0.676 github.com/refraction-networking/utls/dicttls
+#16 0.677 github.com/refraction-networking/utls/internal/byteorder
+#16 0.679 github.com/refraction-networking/utls/internal/fips140tls
+#16 0.679 golang.org/x/crypto/cryptobyte/asn1
+#16 0.679 github.com/cloudflare/circl/sign/internal/dilithium/params
+#16 0.681 google.golang.org/protobuf/internal/set
+#16 0.681 gvisor.dev/gvisor/pkg/bits
+#16 0.681 gvisor.dev/gvisor/pkg/tcpip/seqnum
+#16 0.682 golang.zx2c4.com/wireguard/replay
+#16 0.682 gvisor.dev/gvisor/pkg/gohacks
+#16 0.683 log/slog/internal
+#16 0.684 github.com/xtls/libxray/memory
+#16 0.684 golang.org/x/exp/constraints
+#16 0.689 internal/runtime/strconv
+#16 0.692 crypto/internal/fips140/subtle
+#16 0.702 crypto/internal/fips140deps/cpu
+#16 0.703 internal/chacha8rand
+#16 0.703 internal/bytealg
+#16 0.706 math
+#16 0.708 internal/runtime/exithook
+#16 0.728 internal/runtime/cgroup
+#16 0.728 internal/stringslite
+#16 0.752 internal/race
+#16 0.752 internal/synctest
+#16 0.758 internal/sync
+#16 0.758 internal/runtime/maps
+#16 0.778 github.com/klauspost/compress
+#16 0.778 github.com/riobard/go-bloom
+#16 0.829 runtime
+#16 2.012 internal/reflectlite
+#16 2.012 crypto/subtle
+#16 2.012 sync
+#16 2.012 weak
+#16 2.012 runtime/metrics
+#16 2.012 iter
+#16 2.019 maps
+#16 2.019 slices
+#16 2.072 errors
+#16 2.072 sort
+#16 2.081 internal/bisect
+#16 2.081 internal/testlog
+#16 2.081 internal/singleflight
+#16 2.081 unique
+#16 2.081 github.com/xtls/xray-core/common/signal/done
+#16 2.081 github.com/xtls/xray-core/common/bytespool
+#16 2.081 github.com/xtls/xray-core/common/utils
+#16 2.081 github.com/quic-go/quic-go/internal/utils/linkedlist
+#16 2.081 github.com/xtls/xray-core/common/cache
+#16 2.081 google.golang.org/protobuf/internal/pragma
+#16 2.081 log/slog/internal/buffer
+#16 2.081 crypto/internal/fips140cache
+#16 2.083 internal/oserror
+#16 2.083 io
+#16 2.083 path
+#16 2.083 math/rand/v2
+#16 2.083 strconv
+#16 2.083 google.golang.org/grpc/internal/buffer
+#16 2.084 vendor/golang.org/x/net/dns/dnsmessage
+#16 2.093 syscall
+#16 2.108 internal/godebug
+#16 2.123 crypto/internal/randutil
+#16 2.123 hash
+#16 2.123 internal/saferio
+#16 2.123 github.com/prometheus/client_golang/prometheus/promhttp/internal
+#16 2.123 strings
+#16 2.123 bytes
+#16 2.123 github.com/cloudflare/circl/internal/sha3
+#16 2.129 github.com/beorn7/perks/quantile
+#16 2.129 container/heap
+#16 2.133 hash/fnv
+#16 2.133 hash/crc64
+#16 2.133 hash/crc32
+#16 2.133 hash/adler32
+#16 2.133 gvisor.dev/gvisor/pkg/tcpip/hash/jenkins
+#16 2.155 crypto/internal/fips140deps/godebug
+#16 2.155 math/rand
+#16 2.158 github.com/v2fly/ss-bloomring
+#16 2.173 crypto
+#16 2.173 encoding/base64
+#16 2.173 encoding/base32
+#16 2.173 net/netip
+#16 2.173 reflect
+#16 2.182 vendor/golang.org/x/text/transform
+#16 2.182 golang.org/x/text/transform
+#16 2.184 github.com/cloudflare/circl/sign
+#16 2.191 github.com/xtls/xray-core/common/dice
+#16 2.192 crypto/internal/impl
+#16 2.192 net/http/internal/ascii
+#16 2.192 bufio
+#16 2.192 crypto/internal/fips140
+#16 2.192 go/build/constraint
+#16 2.192 golang.org/x/net/dns/dnsmessage
+#16 2.192 html
+#16 2.192 github.com/munnerz/goautoneg
+#16 2.192 regexp/syntax
+#16 2.192 github.com/xtls/xray-core/common/cmdarg
+#16 2.199 encoding/pem
+#16 2.208 crypto/internal/fips140/sha256
+#16 2.208 crypto/internal/fips140/sha3
+#16 2.208 crypto/internal/fips140/sha512
+#16 2.244 crypto/internal/fips140/hmac
+#16 2.244 crypto/sha3
+#16 2.258 crypto/internal/fips140/check
+#16 2.262 crypto/internal/fips140hash
+#16 2.270 crypto/internal/fips140/edwards25519/field
+#16 2.270 crypto/internal/fips140/aes
+#16 2.270 crypto/internal/fips140/hkdf
+#16 2.270 crypto/internal/fips140/bigmod
+#16 2.270 crypto/internal/fips140/tls12
+#16 2.270 crypto/fips140
+#16 2.270 crypto/internal/fips140/nistec/fiat
+#16 2.278 internal/syscall/execenv
+#16 2.278 crypto/tls/internal/fips140tls
+#16 2.278 github.com/xtls/reality/fips140tls
+#16 2.278 time
+#16 2.279 internal/syscall/unix
+#16 2.284 crypto/internal/fips140/tls13
+#16 2.295 regexp
+#16 2.307 crypto/internal/fips140/edwards25519
+#16 2.400 github.com/xtls/xray-core/common/strmatcher
+#16 2.470 crypto/internal/fips140/nistec
+#16 2.482 context
+#16 2.482 google.golang.org/grpc/backoff
+#16 2.482 github.com/quic-go/quic-go/internal/monotime
+#16 2.482 golang.zx2c4.com/wireguard/ratelimiter
+#16 2.482 io/fs
+#16 2.482 google.golang.org/grpc/keepalive
+#16 2.482 internal/poll
+#16 2.489 github.com/juju/ratelimit
+#16 2.489 google.golang.org/grpc/balancer/pickfirst/internal
+#16 2.489 github.com/sagernet/sing/common/replay
+#16 2.531 github.com/xtls/xray-core/common/ctx
+#16 2.531 google.golang.org/grpc/internal/backoff
+#16 2.531 google.golang.org/grpc/internal/grpcsync
+#16 2.531 github.com/sagernet/sing/common/logger
+#16 2.539 internal/filepathlite
+#16 2.539 embed
+#16 2.560 google.golang.org/protobuf/internal/editiondefaults
+#16 2.589 os
+#16 2.598 internal/fmtsort
+#16 2.598 encoding/binary
+#16 2.598 modernc.org/libc/uuid/uuid
+#16 2.598 modernc.org/libc/sys/types
+#16 2.700 vendor/golang.org/x/crypto/internal/poly1305
+#16 2.700 github.com/cespare/xxhash/v2
+#16 2.700 github.com/sagernet/sing/common/binary
+#16 2.700 golang.org/x/crypto/internal/poly1305
+#16 2.700 github.com/klauspost/compress/internal/snapref
+#16 2.700 github.com/xtls/xray-core/common/crypto/internal
+#16 2.700 github.com/dgryski/go-metro
+#16 2.700 golang.zx2c4.com/wireguard/tai64n
+#16 2.700 gvisor.dev/gvisor/pkg/tcpip/checksum
+#16 2.700 github.com/klauspost/compress/zstd/internal/xxhash
+#16 2.701 golang.org/x/sys/unix
+#16 2.739 golang.org/x/crypto/poly1305
+#16 2.808 crypto/internal/sysrand
+#16 2.808 io/ioutil
+#16 2.808 path/filepath
+#16 2.808 internal/lazyregexp
+#16 2.808 github.com/prometheus/procfs/internal/util
+#16 2.808 vendor/golang.org/x/sys/cpu
+#16 2.808 google.golang.org/protobuf/internal/detrand
+#16 2.809 google.golang.org/grpc/internal/envconfig
+#16 2.809 golang.org/x/sys/cpu
+#16 2.809 os/signal
+#16 2.809 fmt
+#16 2.809 net
+#16 2.834 crypto/internal/entropy
+#16 2.839 golang.org/x/crypto/sha3
+#16 2.839 github.com/cloudflare/circl/simd/keccakf1600
+#16 2.839 golang.org/x/crypto/blake2s
+#16 2.839 github.com/cloudflare/circl/sign/internal/dilithium
+#16 2.840 crypto/internal/fips140/drbg
+#16 2.864 github.com/xtls/xray-core/common/platform
+#16 2.864 os/exec
+#16 2.867 crypto/internal/fips140only
+#16 2.867 crypto/internal/fips140/ecdh
+#16 2.867 crypto/internal/fips140/ed25519
+#16 2.867 crypto/internal/fips140/ecdsa
+#16 2.869 crypto/internal/fips140/mlkem
+#16 2.869 crypto/internal/fips140/rsa
+#16 2.869 crypto/internal/fips140/aes/gcm
+#16 2.883 crypto/hkdf
+#16 2.883 crypto/md5
+#16 2.883 crypto/rc4
+#16 2.888 github.com/refraction-networking/utls/internal/hkdf
+#16 2.888 github.com/xtls/reality/tls13
+#16 2.895 github.com/refraction-networking/utls/internal/tls13
+#16 2.923 internal/goroot
+#16 2.933 crypto/cipher
+#16 2.934 crypto/mlkem
+#16 2.959 math/big
+#16 2.959 database/sql/driver
+#16 2.959 encoding/hex
+#16 2.960 log
+#16 2.960 encoding/json
+#16 2.960 net/url
+#16 2.960 compress/flate
+#16 2.960 mime/quotedprintable
+#16 2.960 google.golang.org/protobuf/internal/errors
+#16 2.960 mime
+#16 2.960 vendor/golang.org/x/net/http2/hpack
+#16 2.961 go/token
+#16 2.961 net/http/internal
+#16 2.961 go/doc/comment
+#16 2.961 os/user
+#16 2.961 internal/buildcfg
+#16 2.961 flag
+#16 2.961 text/template/parse
+#16 2.961 vendor/golang.org/x/text/unicode/norm
+#16 2.961 google.golang.org/grpc/attributes
+#16 2.961 text/tabwriter
+#16 2.961 google.golang.org/grpc/internal/idle
+#16 2.962 golang.org/x/net/http2/hpack
+#16 2.962 google.golang.org/protobuf/internal/version
+#16 2.962 github.com/quic-go/quic-go/quicvarint
+#16 2.962 golang.org/x/text/unicode/norm
+#16 2.962 github.com/quic-go/quic-go/qlogwriter/jsontext
+#16 2.962 runtime/debug
+#16 2.962 github.com/prometheus/procfs/internal/fs
+#16 2.981 crypto/internal/boring
+#16 2.993 crypto/des
+#16 2.993 vendor/golang.org/x/crypto/chacha20
+#16 3.008 google.golang.org/protobuf/encoding/protowire
+#16 3.042 golang.org/x/crypto/chacha20
+#16 3.046 golang.org/x/net/bpf
+#16 3.046 github.com/andybalholm/brotli/matchfinder
+#16 3.047 github.com/klauspost/compress/fse
+#16 3.047 github.com/refraction-networking/utls/internal/boring
+#16 3.047 github.com/robfig/cron/v3
+#16 3.048 crypto/sha1
+#16 3.048 crypto/aes
+#16 3.048 vendor/golang.org/x/crypto/chacha20poly1305
+#16 3.048 crypto/sha512
+#16 3.049 crypto/hmac
+#16 3.049 crypto/ecdh
+#16 3.049 crypto/sha256
+#16 3.054 vendor/golang.org/x/text/unicode/bidi
+#16 3.056 xray-checker/logger
+#16 3.069 database/sql
+#16 3.070 github.com/klauspost/cpuid/v2
+#16 3.071 golang.org/x/net/internal/timeseries
+#16 3.073 go/scanner
+#16 3.076 golang.org/x/text/unicode/bidi
+#16 3.078 compress/gzip
+#16 3.087 google.golang.org/protobuf/reflect/protoreflect
+#16 3.100 compress/zlib
+#16 3.103 github.com/refraction-networking/utls/internal/quicvarint/protocol
+#16 3.116 xray-checker/models
+#16 3.117 golang.org/x/crypto/hkdf
+#16 3.118 github.com/refraction-networking/utls/internal/tls12
+#16 3.120 github.com/xtls/reality/tls12
+#16 3.121 golang.org/x/sync/singleflight
+#16 3.122 golang.org/x/crypto/chacha20poly1305
+#16 3.125 runtime/trace
+#16 3.152 github.com/refraction-networking/utls/internal/quicvarint
+#16 3.152 gvisor.dev/gvisor/pkg/state/wire
+#16 3.152 encoding/gob
+#16 3.152 internal/profile
+#16 3.153 golang.org/x/crypto/curve25519
+#16 3.156 golang.org/x/time/rate
+#16 3.156 runtime/pprof
+#16 3.156 gvisor.dev/gvisor/pkg/sync
+#16 3.156 github.com/google/btree
+#16 3.163 github.com/quic-go/qpack
+#16 3.166 go/ast
+#16 3.174 gopkg.in/yaml.v3
+#16 3.179 gopkg.in/yaml.v2
+#16 3.183 github.com/klauspost/compress/huff0
+#16 3.203 text/template
+#16 3.254 vendor/golang.org/x/text/secure/bidirule
+#16 3.263 gvisor.dev/gvisor/pkg/state
+#16 3.293 golang.org/x/text/secure/bidirule
+#16 3.305 golang.zx2c4.com/wireguard/rwcancel
+#16 3.307 github.com/vishvananda/netns
+#16 3.308 vendor/golang.org/x/net/idna
+#16 3.311 modernc.org/memory
+#16 3.330 golang.org/x/net/idna
+#16 3.358 google.golang.org/protobuf/internal/descfmt
+#16 3.362 google.golang.org/protobuf/internal/descopts
+#16 3.362 google.golang.org/protobuf/internal/strs
+#16 3.362 google.golang.org/protobuf/internal/encoding/messageset
+#16 3.362 google.golang.org/protobuf/internal/order
+#16 3.362 google.golang.org/protobuf/internal/genid
+#16 3.363 google.golang.org/protobuf/runtime/protoiface
+#16 3.418 google.golang.org/protobuf/internal/protolazy
+#16 3.421 google.golang.org/grpc/grpclog/internal
+#16 3.423 github.com/xtls/xray-core/infra/conf/cfgcommon/duration
+#16 3.424 log/slog
+#16 3.428 go.uber.org/atomic
+#16 3.435 google.golang.org/protobuf/internal/encoding/json
+#16 3.435 google.golang.org/protobuf/internal/encoding/text
+#16 3.442 gvisor.dev/gvisor/pkg/linewriter
+#16 3.442 gvisor.dev/gvisor/pkg/sync/locking
+#16 3.473 google.golang.org/grpc/grpclog
+#16 3.484 google.golang.org/protobuf/reflect/protoregistry
+#16 3.486 html/template
+#16 3.488 github.com/xtls/xray-core/main/commands/base
+#16 3.493 gvisor.dev/gvisor/pkg/log
+#16 3.532 go/parser
+#16 3.532 go/doc
+#16 3.540 lukechampine.com/blake3/guts
+#16 3.577 google.golang.org/protobuf/proto
+#16 3.596 crypto/rand
+#16 3.602 crypto/elliptic
+#16 3.602 crypto/internal/boring/bbig
+#16 3.603 encoding/asn1
+#16 3.603 crypto/dsa
+#16 3.604 google.golang.org/protobuf/internal/encoding/defval
+#16 3.604 github.com/dustin/go-humanize
+#16 3.611 github.com/remyoudompheng/bigfft
+#16 3.612 github.com/pelletier/go-toml
+#16 3.612 google.golang.org/grpc/connectivity
+#16 3.612 google.golang.org/grpc/internal/grpclog
+#16 3.624 crypto/ed25519
+#16 3.627 github.com/xtls/reality/hpke
+#16 3.627 crypto/internal/hpke
+#16 3.628 gvisor.dev/gvisor/pkg/rand
+#16 3.628 github.com/klauspost/compress/zstd
+#16 3.629 github.com/refraction-networking/utls/internal/hpke
+#16 3.629 github.com/cloudflare/circl/sign/mldsa/mldsa65/internal
+#16 3.687 crypto/rsa
+#16 3.729 gvisor.dev/gvisor/pkg/atomicbitops
+#16 3.734 gvisor.dev/gvisor/pkg/sleep
+#16 3.734 gvisor.dev/gvisor/pkg/waiter
+#16 3.735 lukechampine.com/blake3/bao
+#16 3.735 google.golang.org/protobuf/internal/filedesc
+#16 3.736 google.golang.org/protobuf/encoding/protodelim
+#16 3.736 google.golang.org/protobuf/encoding/prototext
+#16 3.754 github.com/google/uuid
+#16 3.756 vendor/golang.org/x/net/http/httpproxy
+#16 3.756 github.com/xtls/libxray/dns
+#16 3.756 github.com/pires/go-proxyproto
+#16 3.757 github.com/sagernet/sing/common
+#16 3.757 go4.org/netipx
+#16 3.757 google.golang.org/grpc/internal
+#16 3.757 google.golang.org/grpc/internal/syscall
+#16 3.757 github.com/prometheus/procfs
+#16 3.757 net/textproto
+#16 3.769 google.golang.org/grpc/internal/resolver/dns/internal
+#16 3.773 golang.org/x/net/internal/socket
+#16 3.916 vendor/golang.org/x/net/http/httpguts
+#16 3.922 mime/multipart
+#16 3.924 vendor/golang.org/x/crypto/cryptobyte
+#16 3.924 crypto/x509/pkix
+#16 3.925 github.com/alecthomas/kong
+#16 3.928 go/build
+#16 3.928 golang.org/x/net/http/httpguts
+#16 3.930 golang.org/x/crypto/cryptobyte
+#16 3.931 lukechampine.com/blake3
+#16 3.933 github.com/cloudflare/circl/sign/mldsa/mldsa65
+#16 3.934 github.com/seiflotfy/cuckoofilter
+#16 3.941 gvisor.dev/gvisor/pkg/context
+#16 3.941 google.golang.org/grpc/metadata
+#16 3.941 google.golang.org/grpc/codes
+#16 3.941 google.golang.org/grpc/mem
+#16 3.942 github.com/sagernet/sing/common/atomic
+#16 3.942 github.com/sagernet/sing/common/format
+#16 3.942 github.com/sagernet/sing/common/x/list
+#16 3.942 github.com/sagernet/sing/common/auth
+#16 3.942 golang.zx2c4.com/wireguard/ipc
+#16 3.943 github.com/sagernet/sing/common/random
+#16 3.944 github.com/ghodss/yaml
+#16 3.978 github.com/sagernet/sing/common/exceptions
+#16 4.008 github.com/vishvananda/netlink/nl
+#16 4.008 github.com/sagernet/sing/common/cache
+#16 4.010 google.golang.org/grpc/stats
+#16 4.012 google.golang.org/grpc/internal/grpcutil
+#16 4.012 google.golang.org/grpc/internal/balancerload
+#16 4.012 modernc.org/mathutil
+#16 4.013 google.golang.org/grpc/tap
+#16 4.025 github.com/go-co-op/gocron
+#16 4.058 github.com/sagernet/sing/common/buf
+#16 4.058 github.com/sagernet/sing/common/task
+#16 4.067 google.golang.org/grpc/encoding
+#16 4.091 github.com/refraction-networking/utls/internal/helper
+#16 4.102 google.golang.org/grpc/experimental/stats
+#16 4.104 github.com/xtls/xray-core/common/antireplay
+#16 4.124 gvisor.dev/gvisor/pkg/refs
+#16 4.140 github.com/sagernet/sing/common/metadata
+#16 4.153 google.golang.org/grpc/internal/stats
+#16 4.196 gvisor.dev/gvisor/pkg/buffer
+#16 4.201 github.com/sagernet/sing/common/network
+#16 4.250 crypto/ecdsa
+#16 4.305 gvisor.dev/gvisor/pkg/tcpip
+#16 4.319 github.com/vishvananda/netlink
+#16 4.335 google.golang.org/protobuf/encoding/protojson
+#16 4.336 google.golang.org/protobuf/internal/encoding/tag
+#16 4.362 golang.org/x/net/ipv4
+#16 4.363 golang.org/x/net/ipv6
+#16 4.423 google.golang.org/protobuf/internal/impl
+#16 4.431 modernc.org/libc
+#16 4.451 github.com/sagernet/sing/common/pipe
+#16 4.451 github.com/sagernet/sing/common/bufio
+#16 4.452 github.com/sagernet/sing/common/control
+#16 4.521 github.com/sagernet/sing/common/udpnat
+#16 4.571 github.com/sagernet/sing-shadowsocks
+#16 4.599 golang.zx2c4.com/wireguard/conn
+#16 4.638 crypto/x509
+#16 4.697 golang.zx2c4.com/wireguard/tun
+#16 4.739 xray-checker/config
+#16 4.818 gvisor.dev/gvisor/pkg/tcpip/internal/tcp
+#16 4.819 gvisor.dev/gvisor/pkg/tcpip/transport
+#16 4.828 golang.zx2c4.com/wireguard/device
+#16 4.831 gvisor.dev/gvisor/pkg/tcpip/header
+#16 4.869 github.com/sagernet/sing/common/varbin
+#16 4.869 github.com/sagernet/sing/common/uot
+#16 4.951 github.com/sagernet/sing/common/rw
+#16 4.994 github.com/sagernet/sing-shadowsocks/shadowaead
+#16 5.037 crypto/tls
+#16 5.037 golang.org/x/crypto/ocsp
+#16 5.159 github.com/sagernet/sing-shadowsocks/shadowaead_2022
+#16 5.217 gvisor.dev/gvisor/pkg/tcpip/ports
+#16 5.217 gvisor.dev/gvisor/pkg/tcpip/network/hash
+#16 5.217 gvisor.dev/gvisor/pkg/tcpip/transport/tcpconntrack
+#16 5.260 gvisor.dev/gvisor/pkg/tcpip/stack
+#16 5.517 google.golang.org/protobuf/internal/filetype
+#16 5.556 google.golang.org/protobuf/runtime/protoimpl
+#16 5.576 google.golang.org/protobuf/types/known/timestamppb
+#16 5.577 github.com/xtls/xray-core/common/serial
+#16 5.577 google.golang.org/protobuf/types/descriptorpb
+#16 5.578 google.golang.org/protobuf/types/known/durationpb
+#16 5.578 google.golang.org/protobuf/types/known/anypb
+#16 5.578 google.golang.org/protobuf/protoadapt
+#16 5.602 github.com/prometheus/client_model/go
+#16 5.605 google.golang.org/grpc/binarylog/grpc_binarylog_v1
+#16 5.610 google.golang.org/grpc/encoding/proto
+#16 5.610 google.golang.org/grpc/internal/pretty
+#16 5.612 google.golang.org/genproto/googleapis/rpc/status
+#16 5.613 github.com/xtls/xray-core/common/log
+#16 5.645 google.golang.org/grpc/internal/status
+#16 5.671 github.com/prometheus/common/model
+#16 5.688 github.com/xtls/xray-core/common/errors
+#16 5.694 google.golang.org/grpc/status
+#16 5.713 github.com/xtls/xray-core/common
+#16 5.713 github.com/xtls/xray-core/main/confloader
+#16 5.713 github.com/xtls/xray-core/common/retry
+#16 5.713 github.com/xtls/xray-core/common/net
+#16 5.714 github.com/xtls/xray-core/common/drain
+#16 5.715 google.golang.org/grpc/internal/binarylog
+#16 5.725 net/http/httptrace
+#16 5.726 google.golang.org/grpc/internal/credentials
+#16 5.727 github.com/quic-go/quic-go/internal/protocol
+#16 5.732 github.com/miekg/dns
+#16 5.735 google.golang.org/protobuf/types/gofeaturespb
+#16 5.735 google.golang.org/protobuf/internal/editionssupport
+#16 5.755 google.golang.org/grpc/credentials
+#16 5.756 net/http/internal/httpcommon
+#16 5.756 golang.org/x/net/internal/httpcommon
+#16 5.762 github.com/xtls/xray-core/features
+#16 5.763 github.com/xtls/xray-core/app/version
+#16 5.768 github.com/xtls/xray-core/app/log
+#16 5.768 github.com/xtls/xray-core/transport/internet/headers/tls
+#16 5.769 github.com/xtls/xray-core/transport/internet/headers/srtp
+#16 5.769 github.com/xtls/xray-core/common/task
+#16 5.772 github.com/xtls/xray-core/transport/internet/headers/utp
+#16 5.772 github.com/xtls/xray-core/common/uuid
+#16 5.775 github.com/quic-go/quic-go/internal/utils
+#16 5.775 github.com/xtls/xray-core/transport/internet/headers/noop
+#16 5.775 github.com/xtls/xray-core/transport/internet/headers/wechat
+#16 5.775 github.com/quic-go/quic-go/internal/qerr
+#16 5.776 github.com/xtls/xray-core/transport/internet/headers/dns
+#16 5.777 github.com/quic-go/quic-go/qlogwriter
+#16 5.778 github.com/xtls/xray-core/common/protocol/tls/cert
+#16 5.778 github.com/xtls/xray-core/transport/internet/headers/wireguard
+#16 5.785 google.golang.org/protobuf/reflect/protodesc
+#16 5.799 github.com/xtls/xray-core/features/stats
+#16 5.799 github.com/xtls/xray-core/features/extension
+#16 5.799 github.com/xtls/xray-core/features/inbound
+#16 5.800 github.com/xtls/xray-core/features/policy
+#16 5.805 github.com/xtls/xray-core/features/dns
+#16 5.810 github.com/xtls/xray-core/common/signal
+#16 5.811 github.com/xtls/xray-core/common/signal/pubsub
+#16 5.817 google.golang.org/grpc/credentials/insecure
+#16 5.817 google.golang.org/grpc/internal/channelz
+#16 5.817 google.golang.org/grpc/resolver
+#16 5.817 google.golang.org/grpc/peer
+#16 5.822 github.com/quic-go/quic-go/internal/wire
+#16 5.822 github.com/quic-go/quic-go/internal/flowcontrol
+#16 5.823 net/http
+#16 5.824 github.com/xtls/xray-core/app/policy
+#16 5.827 github.com/prometheus/client_golang/prometheus/internal
+#16 5.852 github.com/xtls/xray-core/features/dns/localdns
+#16 5.852 github.com/xtls/xray-core/transport/internet/stat
+#16 5.852 github.com/xtls/xray-core/app/dns/fakedns
+#16 5.853 github.com/xtls/xray-core/app/stats
+#16 5.872 github.com/xtls/xray-core/common/buf
+#16 5.887 google.golang.org/grpc/internal/metadata
+#16 5.887 google.golang.org/grpc/internal/transport/networktype
+#16 5.887 google.golang.org/grpc/internal/resolver/passthrough
+#16 5.887 google.golang.org/grpc/balancer/grpclb/state
+#16 5.887 google.golang.org/grpc/internal/proxyattributes
+#16 5.903 google.golang.org/grpc/internal/resolver/unix
+#16 5.913 google.golang.org/grpc/internal/resolver/dns
+#16 5.917 google.golang.org/grpc/channelz
+#16 5.922 google.golang.org/grpc/balancer
+#16 5.942 google.golang.org/grpc/balancer/base
+#16 5.942 google.golang.org/grpc/balancer/pickfirst
+#16 5.942 google.golang.org/grpc/internal/serviceconfig
+#16 5.945 google.golang.org/grpc/resolver/dns
+#16 5.959 github.com/xtls/xray-core/transport
+#16 5.959 github.com/xtls/xray-core/common/net/cnc
+#16 5.959 github.com/xtls/xray-core/common/protocol/udp
+#16 5.959 github.com/xtls/xray-core/common/protocol/dns
+#16 5.959 github.com/xtls/xray-core/common/protocol/bittorrent
+#16 5.959 github.com/xtls/xray-core/transport/pipe
+#16 5.959 github.com/xtls/xray-core/common/platform/filesystem
+#16 5.959 github.com/xtls/xray-core/common/protocol
+#16 5.959 github.com/xtls/xray-core/infra/conf/json
+#16 5.961 google.golang.org/grpc/internal/resolver
+#16 5.973 github.com/xtls/xray-core/features/outbound
+#16 5.973 github.com/xtls/xray-core/features/routing
+#16 5.993 google.golang.org/grpc/balancer/endpointsharding
+#16 5.993 google.golang.org/grpc/internal/balancer/gracefulswitch
+#16 5.999 github.com/quic-go/quic-go/qlog
+#16 6.007 github.com/xtls/xray-core/transport/internet/tagged
+#16 6.008 github.com/xtls/xray-core/features/routing/dns
+#16 6.031 google.golang.org/grpc/balancer/roundrobin
+#16 6.035 gvisor.dev/gvisor/pkg/tcpip/header/parse
+#16 6.036 gvisor.dev/gvisor/pkg/tcpip/transport/internal/network
+#16 6.036 gvisor.dev/gvisor/pkg/tcpip/transport/packet
+#16 6.036 gvisor.dev/gvisor/pkg/tcpip/network/internal/fragmentation
+#16 6.037 gvisor.dev/gvisor/pkg/tcpip/transport/internal/noop
+#16 6.037 gvisor.dev/gvisor/pkg/tcpip/network/internal/ip
+#16 6.037 gvisor.dev/gvisor/pkg/tcpip/link/channel
+#16 6.037 gvisor.dev/gvisor/pkg/tcpip/network/internal/multicast
+#16 6.038 github.com/xtls/xray-core/proxy/vless
+#16 6.038 github.com/xtls/xray-core/common/session
+#16 6.038 github.com/xtls/xray-core/common/protocol/tls
+#16 6.038 github.com/xtls/xray-core/common/crypto
+#16 6.060 github.com/xtls/xray-core/common/protocol/quic
+#16 6.080 github.com/xtls/xray-core/transport/internet
+#16 6.080 github.com/xtls/xray-core/features/routing/session
+#16 6.080 github.com/xtls/xray-core/common/xudp
+#16 6.097 github.com/xtls/xray-core/proxy/vless/encryption
+#16 6.098 github.com/xtls/xray-core/proxy/vmess/aead
+#16 6.141 github.com/xtls/xray-core/proxy/vmess
+#16 6.146 gvisor.dev/gvisor/pkg/tcpip/network/ipv4
+#16 6.148 gvisor.dev/gvisor/pkg/tcpip/network/ipv6
+#16 6.162 gvisor.dev/gvisor/pkg/tcpip/transport/raw
+#16 6.192 github.com/xtls/xray-core/proxy/vmess/encoding
+#16 6.204 github.com/quic-go/quic-go/internal/congestion
+#16 6.205 github.com/quic-go/quic-go/internal/handshake
+#16 6.284 github.com/quic-go/quic-go/internal/ackhandler
+#16 6.301 gvisor.dev/gvisor/pkg/tcpip/transport/udp
+#16 6.302 gvisor.dev/gvisor/pkg/tcpip/transport/icmp
+#16 6.304 gvisor.dev/gvisor/pkg/tcpip/transport/tcp
+#16 6.398 github.com/xtls/xray-core/transport/internet/udp
+#16 6.400 github.com/xtls/xray-core/app/proxyman
+#16 6.400 github.com/xtls/xray-core/proxy/blackhole
+#16 6.429 github.com/quic-go/quic-go
+#16 6.491 github.com/xtls/xray-core/core
+#16 6.597 github.com/xtls/xray-core/proxy/dns
+#16 6.597 github.com/xtls/xray-core/proxy/loopback
+#16 6.598 github.com/xtls/xray-core/proxy/shadowsocks
+#16 6.598 github.com/xtls/xray-core/proxy/vmess/inbound
+#16 6.599 github.com/xtls/xray-core/transport/internet/tagged/taggedimpl
+#16 6.605 github.com/xtls/xray-core/proxy/vmess/outbound
+#16 7.096 gvisor.dev/gvisor/pkg/tcpip/adapters/gonet
+#16 7.164 github.com/xtls/xray-core/proxy/wireguard/gvisortun
+#16 7.233 github.com/xtls/xray-core/proxy/wireguard
+#16 7.233 expvar
+#16 7.233 github.com/prometheus/common/expfmt
+#16 7.233 github.com/prometheus/client_golang/internal/github.com/golang/gddo/httputil/header
+#16 7.233 github.com/xtls/libxray/nodep
+#16 7.234 golang.org/x/net/trace
+#16 7.234 net/http/httputil
+#16 7.234 github.com/xtls/xray-core/app/observatory
+#16 7.234 github.com/xtls/xray-core/common/protocol/http
+#16 7.234 golang.org/x/net/http2
+#16 7.234 net/http/pprof
+#16 7.234 github.com/xtls/xray-core/main/confloader/external
+#16 7.234 github.com/xtls/xray-core/transport/internet/headers/http
+#16 7.234 github.com/xtls/xray-core/common/ocsp
+#16 7.235 github.com/gorilla/websocket
+#16 7.243 github.com/andybalholm/brotli
+#16 7.253 github.com/prometheus/client_golang/internal/github.com/golang/gddo/httputil
+#16 7.269 github.com/quic-go/quic-go/http3/qlog
+#16 7.278 github.com/xtls/xray-core/app/dispatcher
+#16 7.334 github.com/xtls/xray-core/app/router
+#16 7.336 github.com/xtls/xray-core/app/observatory/burst
+#16 7.365 github.com/quic-go/quic-go/http3
+#16 7.371 github.com/xtls/xray-core/app/metrics
+#16 7.386 github.com/xtls/xray-core/transport/internet/browser_dialer
+#16 7.405 github.com/prometheus/client_golang/prometheus
+#16 7.800 github.com/prometheus/client_golang/prometheus/promauto
+#16 7.800 github.com/prometheus/client_golang/prometheus/promhttp
+#16 7.843 xray-checker/metrics
+#16 7.851 google.golang.org/grpc/internal/transport
+#16 7.874 xray-checker/checker
+#16 8.077 modernc.org/sqlite/lib
+#16 8.119 google.golang.org/grpc/internal/resolver/delegatingresolver
+#16 8.147 google.golang.org/grpc
+#16 8.295 github.com/refraction-networking/utls
+#16 8.469 google.golang.org/grpc/reflection/grpc_reflection_v1alpha
+#16 8.471 github.com/xtls/xray-core/app/log/command
+#16 8.471 google.golang.org/grpc/reflection/grpc_reflection_v1
+#16 8.471 github.com/xtls/xray-core/app/observatory/command
+#16 8.471 github.com/xtls/xray-core/app/router/command
+#16 8.472 github.com/xtls/xray-core/app/stats/command
+#16 8.472 github.com/xtls/xray-core/transport/internet/grpc/encoding
+#16 8.542 google.golang.org/grpc/reflection/internal
+#16 8.574 google.golang.org/grpc/reflection
+#16 8.607 github.com/xtls/xray-core/app/commander
+#16 9.086 github.com/xtls/reality
+#16 9.595 github.com/xtls/xray-core/transport/internet/tls
+#16 9.781 github.com/xtls/xray-core/transport/internet/reality
+#16 9.781 github.com/xtls/xray-core/proxy/dokodemo
+#16 9.782 github.com/xtls/xray-core/transport/internet/httpupgrade
+#16 9.782 github.com/xtls/xray-core/app/dns
+#16 9.782 github.com/xtls/xray-core/main/commands/all/tls
+#16 9.782 github.com/xtls/xray-core/transport/internet/websocket
+#16 9.783 github.com/xtls/xray-core/transport/internet/kcp
+#16 9.888 github.com/xtls/xray-core/proxy
+#16 9.888 github.com/xtls/xray-core/transport/internet/grpc
+#16 9.888 github.com/xtls/xray-core/proxy/trojan
+#16 9.888 github.com/xtls/xray-core/transport/internet/tcp
+#16 9.888 github.com/xtls/xray-core/transport/internet/splithttp
+#16 9.951 github.com/xtls/xray-core/app/proxyman/command
+#16 9.951 github.com/xtls/xray-core/proxy/freedom
+#16 9.952 github.com/xtls/xray-core/common/singbridge
+#16 9.952 github.com/xtls/xray-core/proxy/vless/encoding
+#16 9.952 github.com/xtls/xray-core/proxy/http
+#16 9.952 github.com/xtls/xray-core/common/mux
+#16 10.00 github.com/xtls/xray-core/proxy/shadowsocks_2022
+#16 10.04 github.com/xtls/xray-core/proxy/socks
+#16 10.04 github.com/xtls/xray-core/app/reverse
+#16 10.04 github.com/xtls/xray-core/app/proxyman/outbound
+#16 10.04 github.com/xtls/xray-core/app/proxyman/inbound
+#16 10.10 github.com/xtls/xray-core/proxy/vless/inbound
+#16 10.14 github.com/xtls/xray-core/proxy/vless/outbound
+#16 10.25 github.com/xtls/xray-core/infra/conf
+#16 10.50 github.com/xtls/libxray/geo
+#16 10.50 github.com/xtls/xray-core/common/reflect
+#16 10.50 github.com/xtls/libxray/share
+#16 10.53 github.com/xtls/xray-core/main/commands/all/convert
+#16 10.53 github.com/xtls/xray-core/infra/conf/serial
+#16 10.56 github.com/xtls/xray-core/main/json
+#16 10.56 github.com/xtls/xray-core/main/toml
+#16 10.56 github.com/xtls/xray-core/main/yaml
+#16 10.56 github.com/xtls/xray-core/main/commands/all/api
+#16 10.63 github.com/xtls/xray-core/main/commands/all
+#16 10.65 github.com/xtls/xray-core/main/distro/all
+#16 10.68 github.com/xtls/libxray/xray
+#16 10.68 xray-checker/xray
+#16 10.70 github.com/xtls/libxray
+#16 10.73 xray-checker/subscription
+#16 12.08 modernc.org/sqlite
+#16 12.19 xray-checker/storage
+#16 12.21 xray-checker/web
+#16 12.31 xray-checker
+#16 12.32 # xray-checker
+#16 12.32 ./main.go:7:2: "strings" imported and not used
+#16 12.32 ./main.go:90:11: undefined: fmt
+#16 12.32 ./main.go:101:12: undefined: fmt
+#16 12.32 ./main.go:108:3: undefined: proxyChecker
+#16 12.32 ./main.go:111:46: undefined: proxyChecker
+#16 ERROR: process "/bin/sh -c CGO_ENABLED=${CGO_ENABLED} GOOS=${TARGETOS} GOARCH=${TARGETARCH}   go build -v -ldflags=\"-s -w -X main.version=${GIT_TAG} -X main.commit=${GIT_COMMIT}\" -o /usr/bin/xray-checker . &&   upx --best --lzma /usr/bin/xray-checker" did not complete successfully: exit code: 1
+------
+ > [builder 8/8] RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64   go build -v -ldflags="-s -w -X main.version=${GIT_TAG} -X main.commit=${GIT_COMMIT}" -o /usr/bin/xray-checker . &&   upx --best --lzma /usr/bin/xray-checker:
+12.08 modernc.org/sqlite
+12.19 xray-checker/storage
+12.21 xray-checker/web
+12.31 xray-checker
+12.32 # xray-checker
+12.32 ./main.go:7:2: "strings" imported and not used
+12.32 ./main.go:90:11: undefined: fmt
+12.32 ./main.go:101:12: undefined: fmt
+12.32 ./main.go:108:3: undefined: proxyChecker
+12.32 ./main.go:111:46: undefined: proxyChecker
+------
+Dockerfile:26
+--------------------
+  25 |     
+  26 | >>> RUN CGO_ENABLED=${CGO_ENABLED} GOOS=${TARGETOS} GOARCH=${TARGETARCH} \
+  27 | >>>   go build -v -ldflags="-s -w -X main.version=${GIT_TAG} -X main.commit=${GIT_COMMIT}" -o /usr/bin/xray-checker . && \
+  28 | >>>   upx --best --lzma /usr/bin/xray-checker
+  29 |     
+--------------------
+ERROR: failed to solve: process "/bin/sh -c CGO_ENABLED=${CGO_ENABLED} GOOS=${TARGETOS} GOARCH=${TARGETARCH}   go build -v -ldflags=\"-s -w -X main.version=${GIT_TAG} -X main.commit=${GIT_COMMIT}\" -o /usr/bin/xray-checker . &&   upx --best --lzma /usr/bin/xray-checker" did not complete successfully: exit code: 1
+
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/gonj78969035a8v4lfdc2nmft

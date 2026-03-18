@@ -1,0 +1,16 @@
+{
+  "name": "Xray Checker",
+  "short_name": "Xray",
+  "start_url": "/zh/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#0f172a",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

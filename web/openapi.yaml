@@ -166,6 +166,71 @@ paths:
               schema:
                 $ref: '#/components/schemas/APIErrorResponse'
 
+  /api/v1/check:
+    post:
+      summary: Trigger manual check
+      description: Manually triggers a check for all proxies.
+      tags:
+        - Checker
+      responses:
+        '200':
+          description: Check started
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIResponse'
+  /api/v1/subscriptions:
+    get:
+      summary: List subscriptions
+      description: Returns a list of all subscription URLs from the database.
+      tags:
+        - Configuration
+      responses:
+        '200':
+          description: List of URLs
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/APIResponse'
+                  - type: object
+                    properties:
+                      data:
+                        type: array
+                        items:
+                          type: string
+    post:
+      summary: Add subscription
+      description: Adds a new subscription URL to the database.
+      tags:
+        - Configuration
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                url:
+                  type: string
+      responses:
+        '200':
+          description: Subscription added
+    delete:
+      summary: Delete subscription
+      description: Deletes a subscription URL from the database.
+      tags:
+        - Configuration
+      parameters:
+        - name: url
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Subscription deleted
+
 components:
   securitySchemes:
     basicAuth:
